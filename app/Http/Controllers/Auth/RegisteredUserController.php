@@ -8,6 +8,7 @@ use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
@@ -21,16 +22,13 @@ class RegisteredUserController extends Controller
     public function create()
     {
 
-        return redirect()->route('welcome');
+        if (env('APP_REGISTER','false')) {
+            return view('auth.register');
+        }
+        else{
+            return redirect()->route('welcome');
+        }
     }
-
-    /**
-     * Display the registration view.
-     */
-//    public function create(): View
-//    {
-//        return view('auth.register');
-//    }
 
     /**
      * Handle an incoming registration request.
