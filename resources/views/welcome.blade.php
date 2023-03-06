@@ -1,5 +1,5 @@
 <x-guest-layout>
-    <div class="px-6 lg:px-8 bg-gradient-to-t from-white via-gray-500 to-white">
+    <div class="px-6 lg:px-8 bg-gradient-to-t from-white via-gray-500 to-white pb-24 sm:pb-48">
         <div class="relative px-6 lg:px-8">
             <div class="mx-auto max-w-7xl py-32 sm:py-49 lg:py-58">
                 <div class="text-center mt-10">
