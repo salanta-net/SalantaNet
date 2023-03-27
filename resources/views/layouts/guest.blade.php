@@ -17,7 +17,10 @@
     </head>
     <body class="">
     <div class="">
-        @include('layouts.navigation')
+        <div class="bg-transparent">
+            @include('layouts.navigation')
+        </div>
+
         <!-- Page Content -->
         <main>
             {{ $slot }}
