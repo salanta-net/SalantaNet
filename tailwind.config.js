@@ -1,4 +1,4 @@
-const defaultTheme = require('tailwindcss/defaultTheme');
+
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
@@ -11,7 +11,7 @@ module.exports = {
     theme: {
         extend: {
             fontFamily: {
-                sans: ['Figtree', ...defaultTheme.fontFamily.sans],
+                oudiowide: ['Audiowide','cursive'],
             },
         },
     },
