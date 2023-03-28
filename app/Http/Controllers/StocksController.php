@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Stock\SP500;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class StocksController extends Controller
 {
@@ -13,8 +14,7 @@ class StocksController extends Controller
      */
     public function index()
     {
-
-
+//        https://www.plus500.com/en-AU/Instruments/ES
 
 
         return view('stocks.index');
