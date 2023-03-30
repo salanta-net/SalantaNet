@@ -23,8 +23,25 @@
                     </div>
                 </div>
             </div>
-            <div class="absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-30rem)]">
+            <div class="absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-30rem)]"
+            </div>
+        </div>
+    <div class=" py-24 sm:py-32">
+        <div class="mx-auto max-w-7xl px-6 lg:px-8">
+            <h2 class="text-center text-xl font-semibold leading-8 text-gray-900">Relied upon the world’s most innovative teams</h2>
+            <div class="mx-auto mt-10 grid max-w-lg grid-cols-2 items-center gap-x-2 gap-y-10 sm:max-w-xl sm:grid-cols-4 sm:gap-x-10 lg:mx-0 lg:max-w-none lg:grid-cols-4">
+                <img class="col-span-2 max-h-12 w-full object-contain lg:col-span-1 " src="{{asset('images/icons/laravel.svg')}}" alt="Laravel" width="158" height="48">
+                <img class="col-span-2 max-h-12 w-full object-contain lg:col-span-1 " src="{{asset('images/icons/livewire.svg')}}" alt="Livewire" width="158" height="48">
+                <img class="col-span-2 max-h-12 w-full object-contain lg:col-span-1 " src="{{asset('images/icons/github.svg')}}" alt="Github" width="158" height="48">
+                <img class="col-span-2 max-h-12 w-full object-contain lg:col-span-1 " src="{{asset('images/icons/digitalocean.svg')}}" alt="DigitalOcean" width="158" height="48">
+                <img class="col-span-2 max-h-12 w-full object-contain lg:col-span-1 " src="{{asset('images/icons/forge.svg')}}" alt="Forge" width="158" height="48">
+                <img class="col-span-2 max-h-12 w-full object-contain lg:col-span-1 " src="{{asset('images/icons/envoyer.svg')}}" alt="Envoyer" width="158" height="48">
+                <img class="col-span-2 max-h-12 w-full object-contain lg:col-span-1 " src="{{asset('images/icons/tailwind.svg')}}" alt="Tailwind" width="158" height="48">
+                <img class="col-span-2 max-h-12 w-full object-contain lg:col-span-1 " src="{{asset('images/icons/alpine.svg')}}" alt="AlpineJs" width="158" height="48">
             </div>
         </div>
     </div>
+
+    </div>
+
 </x-guest-layout>
