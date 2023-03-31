@@ -21,6 +21,12 @@ class ByYear extends Component
     public $less50;
     public $less100;
 
+    public $rate = 0;
+    public $rate_change = 0;
+    public $rate_change_text = 0;
+    public $rate_high = 0;
+    public $rate_low = 0;
+
 
 public function getData()
 {
@@ -61,13 +67,48 @@ public function getData()
 
     $array = json_decode($result,true);
 
-    dd($array);
+//    "InstrumentID" => 18
+//  "BuyPrice" => 4092.72
+//  "SellPrice" => 4092.02
+//  "HighPrice" => 4093.52
+//  "LowPrice" => 4077.78
+//  "ChangePercent" => 0.3
+//  "ChangePercentText" => "0.30%"
+//  "UsersBuyPercentage" => 50.0
+//  "UsersSellPercentage" => 50.0
+//  "IsSentimentValid" => true
+
+//    $this->rate = $array['SellPrice'];
+//    $this->rate_change = $array['ChangePercent'];
+//    $this->rate_change_text = $array['ChangePercentText'];
+//    $this->rate_high = $array['HighPrice'];
+//    $this->rate_low = $array['LowPrice'];
 }
 
     public function render()
     {
+        $StartYear = Carbon::parse('2023-01-01');
+        $StartPrice = SP500::where('date','>=',$StartYear)->OrderBy('date','asc')->first();
+        $CurrentPrice = SP500::where('date','<=',Carbon::now()->format('Y-m-d'))->OrderBy('date','desc')->first();
+        $days = $StartYear->diffInDays(Carbon::now());
 
-//        $this->getData();
+        $contracts = 1;
+        $OverNightBuy = 0.0262;
+        $InvestmentValue = $contracts*$StartPrice->open;
+        $fee = ($InvestmentValue/100*$OverNightBuy)*$days;
+
+        $profit = ($CurrentPrice->close-$StartPrice->open)*$contracts-$fee;
+
+        $Investment = $InvestmentValue/20;
+
+        $rendite = 100/$Investment * $profit;
+
+//        dd($StartPrice->open,$CurrentPrice->close,$InvestmentValue,$fee,$profit,$Investment,$rendite);
+
+//        dd($fee);
+
+
+        $this->getData();
         $this->total = DB::table('sp500s')->where('date','>=',$this->selectedyear.'-01-01')->count();
         $this->total_high = DB::table('sp500s')->whereColumn('close','>','open')->where('date','>=',$this->selectedyear.'-01-01')->count();
         $this->total_low = DB::table('sp500s')->whereColumn('open','>','close')->where('date','>=',$this->selectedyear.'-01-01')->count();
