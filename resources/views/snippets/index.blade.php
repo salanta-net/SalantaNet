@@ -38,14 +38,15 @@
                                         </svg>
                                         <span class="sr-only">Search</span>
                                     </button>
-                                    <button type="submit" class="group inline-flex justify-center rounded-md bg-white px-2 py-2 text-gray-400 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">
-                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
-                                            <path class="group-hover:text-orange-600" stroke-linecap="round" stroke-linejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                    <button type="button" class="relative rounded-full bg-orange-600 px-2 text-white hover:bg-orange-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-600">
+                                        <span class="absolute -inset-1.5"></span>
+                                        <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                            <path d="M10.75 4.75a.75.75 0 00-1.5 0v4.5h-4.5a.75.75 0 000 1.5h4.5v4.5a.75.75 0 001.5 0v-4.5h4.5a.75.75 0 000-1.5h-4.5v-4.5z"></path>
                                         </svg>
                                     </button>
                                 </form>
                             </div>
-                                                        <livewire:snippets.lists />
+                                <livewire:snippets.lists />
                         </div>
                     </div>
                     <div class="w-14 flex-shrink-0" aria-hidden="true"></div>
@@ -64,7 +65,7 @@
                                 <span>My List</span>
                             </button>
                         </nav>
-                                                <livewire:snippets.create-edit />
+                        @livewire('snippets.create-edit')
                     </main>
                     <aside class="hidden w-96 flex-shrink-0 border-r border-gray-200 xl:order-first xl:flex xl:flex-col">
                         <div class="px-6 pb-4 pt-6">
@@ -88,14 +89,16 @@
                                     </svg>
                                     <span class="sr-only">Search</span>
                                 </button>
-                                <button type="submit" class="group inline-flex justify-center rounded-md bg-white px-2 py-2 text-gray-400 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
-                                        <path class="group-hover:text-orange-600" stroke-linecap="round" stroke-linejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                <button type="button" class="relative rounded-full bg-orange-600 px-2 text-white hover:bg-orange-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-600">
+                                    <span class="absolute -inset-1.5"></span>
+                                    <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                        <path d="M10.75 4.75a.75.75 0 00-1.5 0v4.5h-4.5a.75.75 0 000 1.5h4.5v4.5a.75.75 0 001.5 0v-4.5h4.5a.75.75 0 000-1.5h-4.5v-4.5z"></path>
                                     </svg>
+                                    <span class="sr-only">Add file</span>
                                 </button>
                             </form>
                         </div>
-                                                <livewire:snippets.lists />
+                            <livewire:snippets.lists />
                     </aside>
                 </div>
             </div>

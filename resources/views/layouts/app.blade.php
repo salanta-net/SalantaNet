@@ -16,6 +16,8 @@
         @livewireStyles
         @stack('style')
         @vite(['resources/css/app.css', 'resources/js/app.js'])
+        <x-rich-text-trix-styles />
+
     </head>
     <body class="font-sans antialiased">
         <div class="min-h-screen">
