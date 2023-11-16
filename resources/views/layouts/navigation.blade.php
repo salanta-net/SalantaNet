@@ -19,6 +19,9 @@
                         <x-nav-link :href="route('stocks.index')" :active="request()->routeIs('stocks.index')">
                             {{ __('Stocks') }}
                         </x-nav-link>
+                        <x-nav-link :href="route('snippets')" :active="request()->routeIs('snippets')">
+                            {{ __('Snippets') }}
+                        </x-nav-link>
                     @endauth
                 </div>
             </div>
@@ -90,6 +93,9 @@
             </x-responsive-nav-link>
                 <x-responsive-nav-link :href="route('stocks.index')" :active="request()->routeIs('stocks.index')">
                     {{ __('Stocks') }}
+                </x-responsive-nav-link>
+                <x-responsive-nav-link :href="route('snippets')" :active="request()->routeIs('snippets')">
+                    {{ __('Snippets') }}
                 </x-responsive-nav-link>
             @else
                 <x-responsive-nav-link :href="route('login')" :active="request()->routeIs('login')">

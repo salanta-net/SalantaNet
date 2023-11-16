@@ -29,6 +29,10 @@ Route::get('/dashboard', function () {
 
 Route::resource('stocks',\App\Http\Controllers\StocksController::class)->middleware(['auth', 'verified']);
 
+Route::get('/snippets', function () {
+    return view('snippets/index');
+})->middleware(['auth', 'verified'])->name('snippets');
+
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
