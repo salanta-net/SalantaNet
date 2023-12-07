@@ -1,5 +1,4 @@
 <article>
-
     <div>
         <div>
             <img class="h-24 w-full object-cover" src="{{asset('images/snippet_banner.png')}}" alt="">
@@ -8,7 +7,7 @@
             <div class="-mt-16 sm:-mt-24 sm:flex sm:items-end sm:space-x-5">
                 <div class="mt-6 sm:flex sm:min-w-0 sm:flex-1 sm:items-center sm:justify-end sm:space-x-6 sm:pb-1">
                     <div class="mt-6 min-w-0 flex-1">
-                        <h1 class="truncate text-2xl font-bold text-gray-900">New Snippet</h1>
+                        <h1 class="truncate text-2xl font-bold text-gray-900">@if($editid > 0) Edit @else New @endif Snippet</h1>
                     </div>
                 </div>
             </div>
@@ -21,10 +20,7 @@
                 @foreach($tags as $key => $tag)
                     <li class="inline">
                         <button wire:click="updatetags('{{$key}}')" class="relative inline-flex items-center rounded-full px-2.5 py-1 ring-1 ring-inset @if(key_exists($key,$tagsSelected)) ring-orange-600 @else ring-gray-300 @endif hover:bg-gray-50">
-                            <div class="absolute flex flex-shrink-0 items-center justify-center">
-                                <span class="h-1.5 w-1.5 rounded-full bg-{{$tag}}" aria-hidden="true"></span>
-                            </div>
-                            <div class="ml-3 text-xs font-semibold text-gray-900">{{$key}}</div>
+                            <div class="text-xs font-semibold text-gray-900">{{$tag}}</div>
                         </button>
                     </li>
                 @endforeach
@@ -39,7 +35,7 @@
             </div>
 
             <div>
-                <livewire:trix :value="$body" />
+                <livewire:trix :value="$content" />
             </div>
         </div>
         <div class="mt-2">
@@ -51,5 +47,11 @@
             </button>
         </div>
     </div>
+    <div class="px-4 sm:px-6 lg:px-8 mt-4">
+        @foreach ($errors->all() as $error)
+            <p class="text-red-600">{{ $error }}</p>
+        @endforeach
+    </div>
+
 
 </article>
