@@ -12,7 +12,7 @@
     </div>
     <div class="px-6 lg:px-8 pb-24 sm:pb-48" >
         <div class="relative px-6 lg:px-8">
-            <div class="mx-auto max-w-7xl py-32 sm:py-49 lg:py-58" style="background-image: url('{{asset('images/bg-world.png')}}')">
+            <div class="mx-auto max-w-7xl py-32 sm:py-49 lg:py-58">
                 <div class="text-center mt-10">
                     <h1 class="text-7xl font-bold tracking-tight text-gray-900 sm:text-7xl">Boost your productivity</h1>
                     <p class="mt-6 text-3xl leading-8 text-gray-600">Trusted by thousands of developers worldwide</p>
