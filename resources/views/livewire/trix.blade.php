@@ -1,6 +1,6 @@
 <div wire:ignore>
     <input id="{{ $trixId }}" type="hidden" name="content" value="{{ $value }}">
-    <trix-editor wire:ignore input="{{ $trixId }}"></trix-editor>
+    <trix-editor wire:ignore input="{{ $trixId }}" class="prose prose-slate max-w-none prose-li:my-0"></trix-editor>
 
     <script>
         var trixEditor = document.getElementById("{{ $trixId }}")
