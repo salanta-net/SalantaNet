@@ -20,6 +20,10 @@ class Show extends Component
     public function editSnippet($id){
         $this->emit('editSnippet',$id);
     }
+    public function deleteSnippet($id){
+        Snippet::withRichText()->find($id)->delete();
+        return redirect()->route('snippets');
+    }
 
     public function render()
     {

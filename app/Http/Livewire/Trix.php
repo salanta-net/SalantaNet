@@ -16,6 +16,10 @@ class Trix extends Component
     public $trixId;
     public $photos = [];
 
+    protected $rules = [
+        'value' => 'required',
+    ];
+
     public function mount($value = ''){
         $this->value = $value;
         $this->trixId = 'trix-' . uniqid();
