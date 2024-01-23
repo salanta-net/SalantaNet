@@ -18,21 +18,26 @@
 
     </head>
     <body >
-    <div class="relative h-screen overflow-hidden">
+    <div class="relative h-full ">
         <div class="relative z-30">
             @include('layouts.navigation')
-            <main class="absolute w-full">
-                {{ $slot }}
-            </main>
+            <div class="absolute w-full">
+                <main>
+                    {{ $slot }}
+
+                </main>
+                <footer class="mt-12">
+                    @include('layouts.footer')
+                </footer>
+            </div>
         </div>
         <video autoplay loop muted class="absolute z-10 w-auto min-w-full min-h-full max-w-none -mt-16">
             <source src="https://assets.mixkit.co/videos/preview/mixkit-set-of-plateaus-seen-from-the-heights-in-a-sunset-26070-large.mp4" type="video/mp4"/>
             Your browser does not support the video tag.
         </video>
+
     </div>
-    <footer>
-        @include('layouts.footer')
-    </footer>
+
 
     </body>
 </html>
