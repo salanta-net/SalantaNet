@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Livewire\Snippets;
+namespace App\Livewire\Snippets;
 
-use App\Http\Livewire\Trix;
+use App\Livewire\Trix;
 use App\Models\Snippet;
 use Illuminate\Support\Str;
 use Livewire\Component;

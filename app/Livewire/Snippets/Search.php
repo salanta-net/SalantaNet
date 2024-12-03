@@ -1,18 +1,19 @@
 <?php
 
-namespace App\Http\Livewire\Snippets;
+namespace App\Livewire\Snippets;
 
 use Livewire\Component;
 
 class Search extends Component
 {
     public $search = '';
+
     public function updatedSearch($value){
-        $this->emit('searchSnippet',$value);
+        $this->dispatch('searchSnippet',value: $value);
     }
 
     public function newsnippet(){
-        $this->emit('showSnippet',-1);
+        $this->dispatch('showSnippet',id: -1);
     }
 
     public function render()

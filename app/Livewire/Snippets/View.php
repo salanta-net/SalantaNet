@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Http\Livewire\Snippets;
+namespace App\Livewire\Snippets;
 
 use App\Models\Snippet;
 use Livewire\Component;
+use Livewire\Attributes\On;
 
 class View extends Component
 {
@@ -12,10 +13,12 @@ class View extends Component
 
     protected $listeners = ['showSnippet','editSnippet'];
 
+    #[On('showSnippet')]
     public function showSnippet($id){
         $this->tab = $id;
     }
 
+    #[On('editSnippet')]
     public function editSnippet($id){
         if ($id > 0){
             $this->tab = 0;

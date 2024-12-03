@@ -1,19 +1,17 @@
 <?php
 
-namespace App\Http\Livewire\Snippets;
+namespace App\Livewire\Snippets;
 
-use App\Http\Livewire\Trix;
+use App\Livewire\Trix;
 use App\Models\Snippet;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 use Livewire\Component;
-use Tonysm\RichTextLaravel\Livewire\WithRichTexts;
-use Tonysm\RichTextLaravel\Models\RichText;
+use Livewire\Attributes\On;
+
 
 class Create extends Component
 {
 
-    use WithRichTexts;
     public $editSnippet = false;
     public $editid = 0;
     public $tags = [
@@ -31,10 +29,7 @@ class Create extends Component
     public $content;
     public $bodytext;
 
-    public $listeners = [
-        Trix::EVENT_VALUE_UPDATED
-    ];
-
+    #[On('trix_value_updated')]
     public function trix_value_updated($value){
         $this->content = $value;
         $this->bodytext = $value;
@@ -59,17 +54,20 @@ class Create extends Component
 
             $snipet = Snippet::withRichText()->find($this->editid);
             $snipet->title = $this->title;
-            $snipet->content = $this->bodytext;
+            $snipet->content = $this->content;
             $snipet->slug = Str::slug($this->title);
             $snipet->tags = json_encode($this->tagsSelected);
 
             $snipet->save();
 
         }else{
+
             $validated = $this->validate([
                 'title' => 'required|unique:snippets|max:255',
                 'content' => 'required',
             ]);
+
+
             Snippet::create(array_merge($validated, ['slug' => Str::slug($this->title),'tags' => json_encode($this->tagsSelected)]));
         }
 
@@ -77,12 +75,14 @@ class Create extends Component
         return redirect()->route('snippets');
 
     }
+
     public function mount(){
         if ($this->editSnippet){
-            $snipet = Snippet::find($this->editid);
+            $snipet = Snippet::withRichText()->find($this->editid);
             $this->title = $snipet->title;
             $this->content = $snipet->content;
             $this->tagsSelected = json_decode($snipet->tags,true);
+            dd($snipet);
         }
     }
     public function render()

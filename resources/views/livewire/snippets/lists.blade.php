@@ -1,4 +1,5 @@
 <nav class="min-h-0 flex-1 overflow-y-auto" aria-label="Directory" wire:init="loadSnippets">
+    {{count($snippets)}}
     @foreach($snippets as $key => $snippet)
         <div class="relative">
             <div class="sticky top-0 z-10 border-b border-t border-gray-200 bg-gray-50 px-6 py-1 text-sm font-medium text-gray-500">

@@ -12,7 +12,7 @@ class Snippet extends Model
 
     protected $guarded = [];
 
-    protected $richTextFields = [
+    protected $richTextAttributes = [
         'content'
     ];
 }

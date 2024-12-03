@@ -23,7 +23,7 @@
         @livewireStyles
         @stack('style')
         @vite(['resources/css/app.css', 'resources/js/app.js'])
-        <x-rich-text-trix-styles />
+        <x-rich-text::styles theme="richtextlaravel" />
 
     </head>
     <body class="font-sans antialiased">

@@ -1,24 +1,23 @@
 <?php
 
-namespace App\Http\Livewire\Snippets;
+namespace App\Livewire\Snippets;
 
 use App\Models\Snippet;
 use Livewire\Component;
+use Livewire\Attributes\On;
 
 class Show extends Component
 {
     private $snippetid = 0;
     public $tagsSelected = [];
 
-
-    protected $listeners = ['showSnippet'];
-
+    #[On('showSnippet')]
     public function showSnippet($id){
         $this->snippetid = $id;
     }
 
     public function editSnippet($id){
-        $this->emit('editSnippet',$id);
+        $this->dispatch('editSnippet',id: $id);
     }
     public function deleteSnippet($id){
         Snippet::withRichText()->find($id)->delete();

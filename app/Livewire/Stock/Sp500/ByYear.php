@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire\Stock\Sp500;
+namespace App\Livewire\Stock\Sp500;
 
 use App\Models\Stock\SP500;
 use Carbon\Carbon;

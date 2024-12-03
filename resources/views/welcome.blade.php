@@ -1,5 +1,5 @@
 <x-guest-layout>
-    <div class="px-6 lg:px-8 pb-24 sm:pb-48" >
+    <div class="px-6 lg:px-8 pb-24 sm:pb-48 bg-gray-900" >
         <div class="py-32 sm:py-49 lg:py-58">
             <div class="text-center mt-10">
                 <h1 class="text-6xl font-bold tracking-tight text-orange-500 sm:text-7xl">Boost Your Productivity</h1>
