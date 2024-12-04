@@ -4,10 +4,10 @@
             <img class="h-24 w-full object-cover" src="{{asset('images/snippet_banner.png')}}" alt="">
         </div>
         <div class="px-4 sm:px-6 lg:px-8">
-            <div class="-mt-16 sm:-mt-24 sm:flex sm:items-end sm:space-x-5">
+            <div class="-mt-20 sm:-mt-24 sm:flex sm:items-end sm:space-x-5">
                 <div class="mt-6 sm:flex sm:min-w-0 sm:flex-1 sm:items-center sm:justify-end sm:space-x-6 sm:pb-1">
                     <div class="mt-6 min-w-0 flex-1">
-                        <h1 class="truncate text-2xl font-bold text-gray-900">@if($editid > 0) Edit @else New @endif Snippet</h1>
+                        <h1 class="truncate text-3xl font-bold text-gray-900">@if($editid > 0) Edit @else New @endif Snippet</h1>
                     </div>
                 </div>
             </div>
@@ -35,7 +35,8 @@
             </div>
 
             <div>
-                <livewire:trix :value="$content" />
+{{--                <livewire:trix :value="$content" />--}}
+                <x-trix-field id="{{ $trixId }}" name="{{ $trixId }}"  wire:model.live="content" placeholder="{{ __('Share something in a snippet...') }}" autocomplete="off" />
             </div>
         </div>
         <div class="mt-2">

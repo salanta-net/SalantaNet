@@ -12,6 +12,7 @@ use Livewire\Attributes\On;
 class Create extends Component
 {
 
+    public $trixId;
     public $editSnippet = false;
     public $editid = 0;
     public $tags = [
@@ -79,14 +80,16 @@ class Create extends Component
     public function mount(){
         if ($this->editSnippet){
             $snipet = Snippet::withRichText()->find($this->editid);
+            //dd($snipet->content,$snipet->content->body->toTrixHtml());
             $this->title = $snipet->title;
-            $this->content = $snipet->content;
+            $this->content = $snipet->content->body->toTrixHtml();
             $this->tagsSelected = json_decode($snipet->tags,true);
-            dd($snipet);
         }
+        $this->trixId = 'trix-' . uniqid();
     }
     public function render()
     {
+
         return view('livewire.snippets.create');
     }
 }
