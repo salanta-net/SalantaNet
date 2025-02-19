@@ -18,7 +18,7 @@ return [
             /*
              * The name of the header containing the signature.
              */
-            'signature_header_name' => 'Signature',
+            'signature_header_name' => 'HTTP_X_SHOPIFY_HMAC_SHA256',
 
             /*
              *  This class will verify that the content of the signature header is valid.
@@ -67,7 +67,7 @@ return [
      *
      * It deletes all records after 30 days. Set to null if no models should be deleted.
      */
-    'delete_after_days' => 30,
+    'delete_after_days' => 90,
 
     /*
      * Should a unique token be added to the route name
