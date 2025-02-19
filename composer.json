@@ -11,6 +11,7 @@
         "laravel/sanctum": "^4.0",
         "laravel/tinker": "^2.8",
         "livewire/livewire": "^3.4",
+        "predis/predis": "^2.0",
         "spatie/laravel-webhook-client": "^3.4",
         "tonysm/rich-text-laravel": "^3.2.1"
     },
