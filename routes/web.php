@@ -47,7 +47,7 @@ Route::middleware('auth')->group(function () {
 
 });
 
-Route::webhooks('webhook-receiving-url');
+Route::webhooks('webhook-receiving-url','shopify');
 
 
 require __DIR__.'/auth.php';

@@ -7,7 +7,7 @@ return [
              * This package supports multiple webhook receiving endpoints. If you only have
              * one endpoint receiving webhooks, you can use 'default'.
              */
-            'name' => 'default',
+            'name' => 'shopify',
 
             /*
              * We expect that every webhook call will be signed using a secret. This secret
@@ -18,7 +18,7 @@ return [
             /*
              * The name of the header containing the signature.
              */
-            'signature_header_name' => 'HTTP_X_SHOPIFY_HMAC_SHA256',
+            'signature_header_name' => 'X-Shopify-Hmac-SHA256',
 
             /*
              *  This class will verify that the content of the signature header is valid.
