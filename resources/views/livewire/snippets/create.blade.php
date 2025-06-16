@@ -17,11 +17,54 @@
         <div>
             <h2 class="text-sm font-medium text-gray-500">Tags</h2>
             <ul role="list" class="mt-2 leading-8">
-                @foreach($tags as $key => $tag)
-                    <li class="inline">
-                        <button wire:click="updatetags('{{$key}}')" class="relative inline-flex items-center rounded-full px-2.5 py-1 ring-1 ring-inset @if(key_exists($key,$tagsSelected)) ring-orange-600 @else ring-gray-300 @endif hover:bg-gray-50">
+                <div >
+                    <input type="text" wire:model.live="tagsearch" class="block w-1/2 bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-orange-600 sm:text-sm/6" placeholder="Create/Search Tags">
+
+                    @if(strlen($tagsearch) )
+                    <ul x-transition:leave="transition ease-in duration-100" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0" class="absolute z-10 mt-1 max-h-60 w-1/2 overflow-auto rounded-md bg-white py-1 text-base ring-1 shadow-lg ring-black/5 focus:outline-hidden sm:text-sm" >
+                        @if(!in_array($tagsearch,$tags))
+                            <li wire:click="createtag('{{$tagsearch}}')" class="relative cursor-default select-none py-2 pl-8 pr-4 text-gray-900 hover:bg-orange-100" id="listbox-option-0" role="option">
+                                <span class="block truncate font-normal"><strong>Add</strong> {{$tagsearch}}</span>
+                                <span class="absolute inset-y-0 left-0 flex items-center pl-1.5 text-orange-600">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5 stroke-green-600">
+                                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                                </svg>
+                            </span>
+                            </li>
+                        @endif
+
+                        @if(!empty($tags))
+                        @foreach($tags as $id => $label)
+                        <li wire:click="linktag({{$id}})" class="relative cursor-default select-none py-2 pl-8 pr-4 text-gray-900 hover:bg-orange-100" id="listbox-option-0" role="option">
+                            <span class="block truncate font-normal">{{$label}}</span>
+                            <span class="absolute inset-y-0 left-0 flex items-center pl-1.5 text-orange-600">
+
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
+                              <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 7.5A2.25 2.25 0 0 1 7.5 5.25h9a2.25 2.25 0 0 1 2.25 2.25v9a2.25 2.25 0 0 1-2.25 2.25h-9a2.25 2.25 0 0 1-2.25-2.25v-9Z" />
+                            </svg>
+
+                            </span>
+                        </li>
+                        @endforeach
+                        @endif
+
+                    </ul>
+                    @endif
+                </div>
+
+                @foreach($tagsSelected as $key => $tag)
+                    <li class="inline group">
+                        <div class="relative inline-flex items-center rounded-md bg-gray-200 pl-2.5 pr-1 py-1 ">
                             <div class="text-xs font-semibold text-gray-900">{{$tag}}</div>
-                        </button>
+                            <button wire:click="deletetag('{{$key}}')" class="">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4 stroke-gray-400 group-hover:stroke-gray-500">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+                                </svg>
+                            </button>
+
+
+
+                        </div>
                     </li>
                 @endforeach
             </ul>

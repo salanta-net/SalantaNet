@@ -18,9 +18,9 @@
             <div class="mt-8 px-4 pb-12 sm:px-6 lg:px-8 space-y-2 flex flex-row justify-between">
                     <div>
                         <h2 class="text-sm font-medium text-gray-500">Tags</h2>
-                        @if(is_array(json_decode($snippet->tags,true)))
+                        @if(!empty($tagsSelected))
                         <ul role="list" class="mt-2 leading-8">
-                            @foreach(json_decode($snippet->tags,true) as $key => $tag)
+                            @foreach($tagsSelected as $key => $tag)
                                 <li class="inline">
                                     <div class="relative inline-flex items-center rounded-full px-2.5 py-1 ring-1 ring-inset ring-gray-300">
                                         <div class="text-xs font-semibold text-gray-900">{{$tag}}</div>

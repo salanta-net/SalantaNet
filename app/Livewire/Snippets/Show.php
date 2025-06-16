@@ -3,6 +3,7 @@
 namespace App\Livewire\Snippets;
 
 use App\Models\Snippet;
+use App\Models\Taglink;
 use Livewire\Component;
 use Livewire\Attributes\On;
 
@@ -26,6 +27,10 @@ class Show extends Component
 
     public function render()
     {
+        $this->tagsSelected = Taglink::with('tag')
+            ->where('model_type','Snippet')
+            ->where('model_id',$this->snippetid)
+            ->get()->pluck('tag.label','tag.id')->toArray();
         return view('livewire.snippets.show',['snippet'=> $this->snippetid > 0 ? Snippet::find($this->snippetid) : []]);
     }
 }

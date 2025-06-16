@@ -36,18 +36,17 @@ Route::middleware('auth')->group(function () {
         return view('dashboard');
     })->name('dashboard');
 
-    Route::get('/snippets', function () {
-        return view('snippets/index');
-    })->name('snippets');
-
     Route::get('/xworkbooks', function () {
         return view('xworkbooks');
     })->name('xworkbooks');
 
+    Route::get('/snippets', function () {
+        return view('snippets/index');
+    })->name('snippets');
+
 
 });
 
-Route::webhooks('webhook-receiving-url','shopify');
 
 
 require __DIR__.'/auth.php';

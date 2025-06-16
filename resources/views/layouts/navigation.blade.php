@@ -17,7 +17,7 @@
                             {{ __('Dashboard') }}
                         </x-nav-link>
                         <x-nav-link :href="route('xworkbooks')" :active="request()->routeIs('xworkbooks')">
-                            {{ __('xWorkBooks') }}
+                            {{ __('xWorkbooks') }}
                         </x-nav-link>
                         <x-nav-link :href="route('snippets')" :active="request()->routeIs('snippets')">
                             {{ __('Snippets') }}
@@ -86,9 +86,6 @@
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
-                <x-responsive-nav-link :href="route('xworkbooks')" :active="request()->routeIs('xworkbooks')">
-                    {{ __('xWorkBooks') }}
-                </x-responsive-nav-link>
                 <x-responsive-nav-link :href="route('snippets')" :active="request()->routeIs('snippets')">
                     {{ __('Snippets') }}
                 </x-responsive-nav-link>
