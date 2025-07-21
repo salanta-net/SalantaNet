@@ -221,7 +221,7 @@ class ShopifyAction {
                     "title" => $product['title'],
                     "handle" => Str::slug($product['title']),
                     "descriptionHtml" => $product['descriptionHtml'],
-                    "status" => "DRAFT",
+                    "status" => "ACTIVE",
                     "vendor" => "xWorkbooks",
                     "productType" => $product['productType'],
                     "collectionsToJoin" => ["gid://shopify/Collection/".$product['collectionsToJoin']],
