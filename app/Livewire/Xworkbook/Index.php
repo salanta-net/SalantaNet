@@ -141,8 +141,8 @@ class Index extends Component
         $Previewimages = [];
 
         foreach ($this->products as $product){
-            $brands[$product[1]] = true;
-            $models[$product[2]] = true;
+            $brands[$product[0]] = true;
+            $models[$product[1]] = true;
         }
 
         $foldername = Str::slug(implode(' ',array_keys($brands))) . '/' . Str::slug(implode(' ',array_keys($models)));
