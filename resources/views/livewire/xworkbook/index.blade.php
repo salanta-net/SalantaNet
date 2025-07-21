@@ -185,7 +185,7 @@
                                     </label>
                                     <p class="pl-1"></p>
                                 </div>
-                                <p class="text-xs/5 text-gray-600">PDF or ZIP up to 150MB</p>
+                                <p class="text-xs/5 text-gray-600">PDF or ZIP up to 250MG</p>
                                 @error('document') <span class="text-red-600">{{ $message }}</span> @enderror
                                 @if(!empty($document))
                                     <div class="text-green-600 text-2xl">
