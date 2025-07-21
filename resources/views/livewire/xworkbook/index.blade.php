@@ -78,16 +78,21 @@
         @case(1)
             <div class="space-y-4">
                 <div class="flex justify-between">
-                    <div class="w-full">
-                        @if(empty($products))
-                        <div class="text-gray-400">
-                            No Entries
+                    <div class="w-full flex flex-col justify-between">
+                        <div>
+                            @if(empty($products))
+                                <div class="text-gray-400">
+                                    No Entries
+                                </div>
+                            @else
+                                @foreach($products as $product)
+                                    <p>{{$product[0]}} {{$product[1]}} {{$product[2]}}-{{$product[3]}} [ {{$product[4]}} ]</p>
+                                @endforeach
+                            @endif
                         </div>
-                        @else
-                            @foreach($products as $product)
-                                <p>{{$product[0]}} {{$product[1]}} {{$product[2]}}-{{$product[3]}} [ {{$product[4]}} ]</p>
-                            @endforeach
-                        @endif
+                    <div>
+
+                    </div>
                     </div>
 
                     <div class="w-full space-y-4">
@@ -185,7 +190,7 @@
                                     </label>
                                     <p class="pl-1"></p>
                                 </div>
-                                <p class="text-xs/5 text-gray-600">PDF or ZIP up to 250MG</p>
+                                <p class="text-xs/5 text-gray-600">PDF or ZIP up to 250MB</p>
                                 @error('document') <span class="text-red-600">{{ $message }}</span> @enderror
                                 @if(!empty($document))
                                     <div class="text-green-600 text-2xl">

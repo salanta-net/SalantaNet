@@ -3,6 +3,7 @@
 namespace App\Livewire\Xworkbook;
 
 use App\Actions\ShopifyAction;
+use App\Models\ShopifyProducts;
 use App\Models\Snippet;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
@@ -128,7 +129,7 @@ class Index extends Component
         // 1.Generate folder name and save to files bucket
 
         //        $testingfolder  = 'https://xworkbooks.syd1.cdn.digitaloceanspaces.com/';
-        $testingfolder  = 'test/';
+        $testingfolder  = '';
         $prefixLibrary  = 'library';
         $prefixPreview  = 'preview';
         $brands = [];
@@ -146,12 +147,15 @@ class Index extends Component
         foreach ($this->photos as $photo) {
             $fn = Str::random(16).Str::random(16) .'.'.$photo->getClientOriginalExtension();
             $filename = $photo->storePubliclyAs($testingfolder . $prefixPreview . '/' . $foldername, $fn, 's3');
+            $photo->delete();
 
             array_push($Previewimages, $filename);
         }
 
         $filenameSKU = Str::random(16).Str::random(16) .'.'.$this->document->getClientOriginalExtension();
         $SKU = $this->document->storePubliclyAs($testingfolder . $prefixLibrary . '/' . $foldername, $filenameSKU, 's3');
+
+        $this->document->delete();
 
         //2. Loop all products
         foreach ($this->products as $product){
@@ -230,6 +234,20 @@ class Index extends Component
             //$shopify->Publishing($id,264359379257); //Shop
 //        dd($shopify->Publishing(9930193207609,264359379257));
 
+            $newproduct = new ShopifyProducts();
+            $newproduct->product_id = $id;
+            $newproduct->collection_id = $collectionsToJoin;
+            $newproduct->brand = $brand;
+            $newproduct->model = $model;
+            $newproduct->version = $version;
+            $newproduct->year_from = $yearfrom;
+            $newproduct->year_to = $yearto;
+            $newproduct->document_link = "https://xworkbooks.syd1.digitaloceanspaces.com/".$SKU;
+            $newproduct->document_type = 'Electrical';
+            $newproduct->images = json_encode($Previewimage);
+            $newproduct->htmlbody = $descriptionHtml;
+
+            $newproduct->save();
 
         }
 
