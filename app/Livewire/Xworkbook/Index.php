@@ -114,6 +114,10 @@ class Index extends Component
 
     }
 
+    public function delete($index){
+        unset($this->products[$index]);
+    }
+
     public function sync(){
         $shopify = new ShopifyAction();
 
@@ -193,7 +197,13 @@ class Index extends Component
                 "[[IMAGES]]" => implode('',$images),
             ];
 
-            $descriptionHtml = Storage::disk('shopify')->get('templates/vehicle_electrical.html');
+            if ($yearfrom >= 1975){
+                $descriptionHtml = Storage::disk('shopify')->get('templates/vehicle_electrical.html');
+            }else{
+                $descriptionHtml = Storage::disk('shopify')->get('templates/vehicle_electrical_without_year.html');
+            }
+
+
 
             foreach ($replacment as $variable => $value){
                 $descriptionHtml = str_replace($variable,$value,$descriptionHtml);

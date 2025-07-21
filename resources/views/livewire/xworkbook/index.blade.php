@@ -8,8 +8,8 @@
     </div>
 
     <div class="space-y-8">
-        <div class="bg-gray-50 rounded-md p-4">
-            <h2 class="text-base/7 font-semibold text-gray-900">1. Brand & Models</h2>
+        <div class="rounded-md border border-1 p-4">
+            <h2 class="text-base/7 font-semibold text-gray-900 ">1. Brand & Models</h2>
             <p class="mt-1 text-sm/6 text-gray-500"></p>
 
             <div class="space-y-4">
@@ -21,8 +21,14 @@
                                     No Entries
                                 </div>
                             @else
-                                @foreach($products as $product)
-                                    <p>{{$product[0]}} {{$product[1]}} {{$product[2]}}-{{$product[3]}} [ {{$product[4]}} ]</p>
+                                @foreach($products as $index => $product)
+                                    <p class="inline-flex items-center">{{$product[0]}} {{$product[1]}} {{$product[2]}}-{{$product[3]}} [ {{$product[4]}} ]
+                                        <button wire:click="delete({{$index}})" >
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5 stroke-red-600">
+                                                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+                                            </svg>
+                                        </button>
+                                    </p>
                                 @endforeach
                             @endif
                         </div>
@@ -97,54 +103,45 @@
             </div>
         </div>
 
-        <div class="bg-gray-50 rounded-md p-4">
+        <div class="rounded-md border border-1 p-4">
             <h2 class="text-base/7 font-semibold text-gray-900">2. Document</h2>
             <p class="mt-1 text-sm/6 text-gray-500"></p>
 
-            <div class="space-y-4">
-                {{--                <div>--}}
-                {{--                    <label for="location" class="block text-sm/6 font-medium text-gray-900">Document type</label>--}}
-                {{--                    <div class="mt-2 grid grid-cols-1">--}}
-                {{--                        <select wire:model.live="producttype" class="col-start-1 row-start-1 w-full appearance-none rounded-md bg-white py-1.5 pr-8 pl-3 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 focus:outline-2 focus:-outline-offset-2 focus:outline-orange-600 sm:text-sm/6">--}}
-                {{--                            <option value="-1">Select Product Type</option>--}}
-                {{--                            @foreach($producttypes as $index => $pt)--}}
-                {{--                                <option value="{{$index}}">{{$pt}}</option>--}}
-                {{--                            @endforeach--}}
-                {{--                        </select>--}}
-                {{--                    </div>--}}
-                {{--                </div>--}}
-                <div>
-                    <div class="col-span-full">
-                        <label for="cover-photo" class="block text-sm/6 font-medium text-gray-900">File upload</label>
-                        <div class="mt-2 flex justify-center rounded-lg border border-dashed border-gray-900/25 px-6 py-10">
-                            <div class="text-center">
-                                <svg  xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="mx-auto size-12 text-gray-300">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m2.25 0H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
-                                </svg>
+            <div>
+                    <div class="space-y-4">
+                        <div>
+                            <div class="col-span-full">
+                                <label for="cover-photo" class="block text-sm/6 font-medium text-gray-900">File upload</label>
+                                <div class="mt-2 flex justify-center rounded-lg border border-dashed border-gray-900/25 px-6 py-10">
+                                    <div class="text-center">
+                                        <svg  xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="mx-auto size-12 text-gray-300">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m2.25 0H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
+                                        </svg>
 
-                                <div class="mt-4 flex text-sm/6 text-gray-600">
-                                    <label for="file-upload" class="relative cursor-pointer rounded-md bg-white font-semibold text-orange-600 focus-within:ring-2 focus-within:ring-orange-600 focus-within:ring-offset-2 focus-within:outline-hidden hover:text-orange-500">
-                                        <span>Upload a file</span>
-                                        <input id="file-upload" wire:model="document"  type="file" class="sr-only" />
-                                    </label>
-                                    <p class="pl-1"></p>
-                                </div>
-                                <p class="text-xs/5 text-gray-600">PDF or ZIP up to 250MB</p>
-                                @error('document') <span class="text-red-600">{{ $message }}</span> @enderror
-                                @if(!empty($document))
-                                    <div class="text-green-600 text-2xl">
-                                        Done!
+                                        <div class="mt-4 flex text-sm/6 text-gray-600">
+                                            <label for="file-upload" class="relative cursor-pointer rounded-md bg-white font-semibold text-orange-600 focus-within:ring-2 focus-within:ring-orange-600 focus-within:ring-offset-2 focus-within:outline-hidden hover:text-orange-500">
+                                                <input id="file-upload" wire:model="document"  type="file"  />
+                                            </label>
+                                            <p class="pl-1"></p>
+                                        </div>
+                                        <p class="text-xs/5 text-gray-600">PDF or ZIP up to 250MB</p>
+                                        @error('document') <span class="text-red-600">{{ $message }}</span> @enderror
+                                        @if(!empty($document))
+                                            <div class="text-green-600 text-2xl">
+                                                Done!
+                                            </div>
+                                        @endif
                                     </div>
-                                @endif
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>
 
+                    </div>
             </div>
+
         </div>
 
-        <div class="bg-gray-50 rounded-md p-4">
+        <div class="rounded-md border border-1 p-4">
             <h2 class="text-base/7 font-semibold text-gray-900">3. Images</h2>
             <p class="mt-1 text-sm/6 text-gray-500"></p>
             <div class="space-x-4">
@@ -157,8 +154,7 @@
                             </svg>
                             <div class="mt-4 flex text-sm/6 text-gray-600">
                                 <label for="photos-upload" class="relative cursor-pointer rounded-md bg-white font-semibold text-orange-600 focus-within:ring-2 focus-within:ring-orange-600 focus-within:ring-offset-2 focus-within:outline-hidden hover:text-orange-500">
-                                    <span>Upload a file</span>
-                                    <input id="photos-upload" name="photos-upload" wire:model="photos" type="file" class="sr-only" multiple/>
+                                    <input id="photos-upload" name="photos-upload" wire:model="photos" type="file" multiple/>
                                 </label>
                                 <p class="pl-1"></p>
                             </div>
