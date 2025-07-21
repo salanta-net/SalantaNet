@@ -27,7 +27,39 @@
 
     </head>
     <body class="font-sans antialiased">
-        <div class="min-h-screen">
+
+    @if(session()->has('success'))
+    <div>
+        <div x-data="{ open: true }" @keydown.window.escape="open = false" :data-open="open" data-open="true">
+            <div x-show="open" class="relative z-10" aria-labelledby="dialog-title" x-ref="dialog" aria-modal="true">
+                <div x-show="open" x-transition:enter="ease-out duration-300" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" x-transition:leave="ease-in duration-200" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0" x-description="Background backdrop, show/hide based on dialog state." class="fixed inset-0 bg-gray-500/75 transition-opacity" aria-hidden="true"></div>
+
+                <div class="fixed inset-0 z-10 w-screen overflow-y-auto">
+                    <div class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
+                        <div x-show="open" x-transition:enter="ease-out duration-300" x-transition:enter-start="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95" x-transition:enter-end="opacity-100 translate-y-0 sm:scale-100" x-transition:leave="ease-in duration-200" x-transition:leave-start="opacity-100 translate-y-0 sm:scale-100" x-transition:leave-end="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95" x-description="Dialog panel, show/hide based on dialog state." class="relative transform overflow-hidden rounded-lg bg-white px-4 pt-5 pb-4 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg sm:p-6" @click.away="open = false">
+                            <div>
+                                <div class="mx-auto flex size-12 items-center justify-center rounded-full bg-green-100">
+                                    <svg class="size-6 text-green-600" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"></path>
+                                    </svg>
+                                </div>
+                                <div class="mt-3 text-center sm:mt-5">
+                                    <h3 class="text-base font-semibold text-gray-900" id="dialog-title">Done</h3>
+                                    <div class="mt-2">
+                                        <p class="text-sm text-gray-500">{{session()->get('success')}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    @endif
+
+
+    <div class="min-h-screen">
             @include('layouts.navigation')
 
             <!-- Page Heading -->

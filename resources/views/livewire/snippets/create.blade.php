@@ -71,7 +71,7 @@
         </div>
     </div>
     <div class="px-4 sm:px-6 lg:px-8">
-        <div class="space-y-2">
+        <div class="space-y-4">
             <div>
                 <label for="title" style="display:block">Title</label>
                 <input type="text" class="h-8 w-full" style="border:1px solid #ccc" name="title" wire:model.lazy="title">

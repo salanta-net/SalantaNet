@@ -12,6 +12,7 @@
         "laravel/tinker": "^2.8",
         "league/flysystem-aws-s3-v3": "^3.0",
         "livewire/livewire": "^3.4",
+        "phpclassic/php-shopify": "^1.2",
         "predis/predis": "^2.0",
         "spatie/laravel-webhook-client": "^3.4",
         "tonysm/rich-text-laravel": "^3.2.1"
